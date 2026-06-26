@@ -1,0 +1,172 @@
+/* 기본 리셋 및 전역 설정 */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f5f7fb;
+    font-family:sans-serif;
+}
+
+/* 메인 레이아웃 */
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* 헤더 */
+header{
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.profile {
+    display: flex;
+    gap: 5px; 
+}
+
+.profile button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* 네비게이션 바 */
+.navbar{
+    background:white;
+    
+}
+
+.navbar ul{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    list-style:none;
+}
+
+.navbar li{
+    padding:18px 24px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.navbar li:hover{
+    background:#f5f7fb;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+}
+
+/* 현재탭 위치 표시 (리엑트는 자동으로 active가 붙는다네요)*/
+.navbar ul li a.active { 
+    color: #6bb0ff; 
+    border-bottom: 2px solid #6bb0ff; 
+}
+
+
+
+
+/* Modal 공통 베이스 (hidden은 리액트 조건부 렌더링으로 대체되지만 하위 호환용 유지) */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index: 999; /*모달이 항상 위에 뜨도록  */
+}
+
+.hidden{
+    display:none;
+}
+
+/* 로그인 & 회원가입 모달 전용 */
+.login-modal-content{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    animation:popup .2s ease;
+}
+
+.login-modal-content h2{
+    text-align:center;
+}
+
+.login-modal-content input{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.login-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.login-buttons button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#loginSubmit{
+    background:#4f8cff;
+    color:white;
+}
+
+#loginClose{
+    background:#ddd;
+}
+
+#moveSignup {
+    color: #4f8cff;
+    cursor: pointer; 
+}
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* 공통 모바일 반응형 */
+@media(max-width:768px){
+    header{
+        padding:0 20px;
+    }
+    .navbar ul{
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+    .navbar li{
+        flex-shrink:0;
+    }
+}

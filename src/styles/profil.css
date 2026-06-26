@@ -1,0 +1,129 @@
+/* 상단 타이틀 섹션 */
+.profil-container {
+    width: 100%;
+    }
+
+.title-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.profil-container .title-section p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+    }
+
+.title-section button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#4f8cff;
+    color:white;
+    cursor:pointer;
+}
+
+/* 강아지 그리드 구조 */
+.dog-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:24px;
+}
+
+/* 강아지 카드 디자인 */
+.dog-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+    text-align: center;
+}
+
+.dog-card:hover{
+    transform:translateY(-5px);
+}
+
+.dog-image{
+    width: 100%;       /* 고정 수치 대신 컨테이너에 맞춤 조정 */
+    max-width: 370px; 
+    height: 370px; 
+    object-fit:cover;
+}
+
+.dog-info{
+    padding:20px;
+}
+
+.dog-info h2{
+    margin-bottom:10px;
+}
+
+/* 대표 강아지 뱃지 */
+.badge{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#ffd54f;
+    margin-bottom:10px;
+}
+
+/* 카드 내부 제어 버튼 */
+.card-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.card-buttons button{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.delete-btn{
+    background:#ff5f5f;
+    color:white;
+}
+
+.main-btn{
+    background:#4f8cff;
+    color:white;
+}
+
+/* 강아지 등록 모달 전용 콘텐츠 */
+.modal-content{
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.modal-content input{
+    padding:12px;
+    border:1px solid #ddd; /* 선 선명도 추가 */
+    border-radius:8px;
+}
+
+.modal-content button{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* 내 강아지 전용 모바일 반응형 */
+@media(max-width:768px){
+    .title-section{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+}
