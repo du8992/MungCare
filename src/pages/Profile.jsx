@@ -3,14 +3,14 @@ import { useOutletContext } from 'react-router-dom';
 import '../styles/profil.css';
 
     function Profile() {
-    // 1. 상위 Layout 컴포넌트로부터 현재 로그인된 유저 상태를 전달받음
+    //  상위 Layout 컴포넌트로부터 현재 로그인된 유저 상태를 전달받음
     const { currentUser } = useOutletContext();
 
-    // 2. 모달 및 강아지 데이터 상태 관리
+    //  모달 및 강아지 데이터 상태 관리
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
     const [dogs, setDogs] = useState([]);
 
-    // 3. 강아지 등록 폼 상태 관리
+    //  강아지 등록 폼 상태 관리
     const [dogForm, setDogForm] = useState({
         name: '',
         breed: '',
@@ -19,7 +19,7 @@ import '../styles/profil.css';
     });
     const [imageFile, setImageFile] = useState(null);
 
-    // 4. 컴포넌트 마운트 및 유저 변경 시 LocalStorage에서 데이터 불러오기
+    //  컴포넌트 마운트 및 유저 변경 시 LocalStorage에서 데이터 불러오기
     useEffect(() => {
         const savedDogs = JSON.parse(localStorage.getItem('dogs')) || [];
         setDogs(savedDogs);
@@ -31,7 +31,7 @@ import '../styles/profil.css';
         setDogs(updatedDogs);
     };
 
-    // 5. 강아지 등록 처리 핸들러
+    //  강아지 등록 처리 핸들러
     const handleSaveDog = () => {
         if (!currentUser) return;
 
@@ -69,13 +69,13 @@ import '../styles/profil.css';
         }
     };
 
-    // 6. 강아지 삭제 핸들러
+    //  강아지 삭제 
     const handleDeleteDog = (id) => {
         const updatedDogs = dogs.filter((dog) => dog.id !== id);
         saveDogsToStorage(updatedDogs);
     };
 
-    // 7. 대표 강아지 설정 핸들러
+    //  대표 강아지 설정
     const handleSetMainDog = (id) => {
         const updatedDogs = dogs.map((dog) => {
         if (dog.owner === currentUser) {

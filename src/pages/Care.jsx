@@ -206,7 +206,9 @@
                     <span>최근 사료 섭취 칼로리</span>
                     <h4>{myLogs[myLogs.length - 1].consumedCalories} kcal</h4>
                     </div>
+                    
                 </div>
+                
                 )}
 
                 {/* 최근목록 표로 만들기 */}
