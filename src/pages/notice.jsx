@@ -77,6 +77,8 @@
         date: new Date().toLocaleDateString()
         };
 
+        
+
         const updatedPosts = posts.map(post => {
         if (post.id === selectedPost.id) {
             return { ...post, comments: [...(post.comments || []), newComment] };
@@ -90,16 +92,33 @@
         setCommentText('');
     };
 
+    //  게시글 삭제 기능
+    const handlePostDelete = (postId) => {
+        if (!window.confirm('정말로 이 게시글을 삭제하시겠습니까?')) return;
+
+        // 전체 게시글에서 해당 ID의 게시글만 제외하고 필터링
+        const updatedPosts = posts.filter(post => post.id !== postId);
+
+        // 로컬스토리지 및 State 갱신
+        localStorage.setItem('communityPosts', JSON.stringify(updatedPosts));
+        setPosts(updatedPosts);
+        
+        // 상세보기 모달 닫기
+        setSelectedPost(null);
+        alert('게시글이 삭제되었습니다.');
+    };
+
     // 현재 탭에 맞는 게시글 필터링
     const filteredPosts = posts.filter(post => post.board === activeTab);
 
     return (
         <div className="notice-container">
-        <div className="notice-header">
+        <section className="title-section">
             <h2>커뮤니티</h2>
+            <p>자신만의 팁이나 일상을 공유해보세요.</p>
+        </section>
+        
             <button className="write-btn" onClick={handleWriteClick}>+ 글쓰기</button>
-        </div>
-
         {/* 탭 메뉴 */}
         <div className="board-tabs">
             <button className={activeTab === 'free' ? 'active' : ''} onClick={() => handleTabChange('free')}>자유게시판</button>
@@ -147,25 +166,24 @@
                 {selectedPost.image && <img src={selectedPost.image} alt="첨부이미지" className="detail-img" />}
                 </div>
 
-                <div className="modal-actions">
-                <button className={`like-main-btn ${(selectedPost.likedUsers || []).includes(currentUser) ? 'active' : ''}`} onClick={(e) => 
-                    handleLikeToggle(selectedPost.id, e)}>
+                <div className="modal-actions"style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <button 
+                className={`like-main-btn ${(selectedPost.likedUsers || []).includes(currentUser) ? 'active' : ''}`} 
+                onClick={(e) => handleLikeToggle(selectedPost.id, e)}
+                >
                     좋아요 {(selectedPost.likedUsers || []).length}
                 </button>
-                </div>
 
-                {/* 댓글 영역 */}
-                <div className="comments-section">
-                <h3>댓글 ({(selectedPost.comments || []).length})</h3>
-                <div className="comment-list">
-                    {(selectedPost.comments || []).map(cmt => (
-                    <div key={cmt.id} className="comment-item">
-                        <div>
-                        <b>{cmt.writer}</b> <span className="cmt-date">{cmt.date}</span>
-                        </div>
-                        <p>{cmt.text}</p>
-                    </div>
-                    ))}
+                {/* 🌟 내가 쓴 글일 때만 삭제하기 버튼 보이기 */}
+                {selectedPost.writer === currentUser && (
+                    <button 
+                    className="delete-main-btn" 
+                    onClick={() => handlePostDelete(selectedPost.id)}
+                    
+                    >
+                    삭제하기
+                    </button>
+                )}
                 </div>
 
                 {currentUser ? (
@@ -178,7 +196,7 @@
                 )}
                 </div>
             </div>
-            </div>
+            
         )}
         </div>
     );

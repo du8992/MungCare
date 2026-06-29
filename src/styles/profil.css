@@ -4,10 +4,10 @@
     }
 
 .title-section{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
 .profil-container .title-section p {
