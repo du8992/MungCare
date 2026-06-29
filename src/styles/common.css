@@ -33,6 +33,7 @@ header{
     font-weight:bold;
 }
 
+/* 로그인/회원가입 버튼 */
 .profile {
     display: flex;
     gap: 5px; 
@@ -45,8 +46,50 @@ header{
     cursor:pointer;
 }
 
+.my-info-widget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f0f0f0; 
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #444;
+    border: 1px solid #e1ecff;
+}
+
+.my-info-widget b {
+    color: #222;
+}
+
+.my-info-widget .highlight {
+  color: #4f8cff; /* 대표 강아지 이름은 포인트 컬러 처리 */
+}
+
+.my-info-widget .divider {
+    color: #ccc;
+    font-size: 11px;
+}
+
+/* 로그아웃 버튼 전용 스타일
+.logout-btn {
+    background: #f1f3f5;
+    color: #666;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: #e9ecef;
+    color: #333;
+} */
+
+
 /* 네비게이션 바 */
 .navbar{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     background:white;
     
 }
