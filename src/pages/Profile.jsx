@@ -98,6 +98,7 @@ import '../styles/profil.css';
             <h2>My Dog Family</h2>
             <p>내 반려 강아지 정보를 등록하여 관리해보세요.</p>
             </div>
+            <br />
             {currentUser && (
             <button id="addDogBtn" onClick={() => setIsRegisterOpen(true)}>
                 + 강아지 등록

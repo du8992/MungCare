@@ -4,8 +4,7 @@
     import Care from '../pages/Care'; // 1. 방금 만든 컴포넌트 import
     import Notice from '../pages/notice';
     import NoticeWrite from '../pages/NoticeWrite';
-
-    const Home = () => <div>홈 페이지 화면입니다.</div>;
+    import Home from '../pages/Home';
     
 
     const router = createBrowserRouter([
