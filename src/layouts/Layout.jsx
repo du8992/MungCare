@@ -1,58 +1,41 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import '../styles/common.css'; // 공통 스타일(헤더, 네비바, 모달)
+import { NavLink, Outlet, Link } from 'react-router-dom';
+import LandingHome from '../pages/LandingHome'; // 🌟 LandingHome 임포트 필수
+import '../styles/common.css';
 
 function Layout() {
-    // 모달 열림/닫힘 상태 관리
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isSignupOpen, setIsSignupOpen] = useState(false);
-
-    // 인증 관련 상태 관리
     const [currentUser, setCurrentUser] = useState(localStorage.getItem('currentUser'));
-
-    // 🌟 누락되었던 강아지 통계 데이터 상태 정의 추가!
     const [dogStats, setDogStats] = useState({ count: 0, mainDogName: '없음' });
-
-    // 입력 폼 상태 관리
     const [loginForm, setLoginForm] = useState({ id: '', pw: '' });
     const [signupForm, setSignupForm] = useState({ id: '', pw: '', pwCheck: '' });
 
-    // 로그인/로그아웃 버튼 클릭 핸들러
     const handleAuthButtonClick = () => {
         if (currentUser) {
-            // 이미 로그인된 상태 > 로그아웃 처리
             localStorage.removeItem('currentUser');
             setCurrentUser(null);
             alert('로그아웃 되었습니다.');
+            window.location.reload(); // 로그아웃 시 랜딩 페이지로 강제 새로고침
         } else {
-            // 로그아웃 상태 -> 로그인 모달 열기
             setIsLoginOpen(true);
         }
     };
 
-    // 실시간으로 로컬스토리지 정보를 연동하는 훅
     useEffect(() => {
         const user = localStorage.getItem('currentUser');
         setCurrentUser(user);
 
         if (user) {
             const savedDogs = JSON.parse(localStorage.getItem('dogs')) || [];
-            // 현재 로그인한 유저의 강아지들만 필터링
             const myDogs = savedDogs.filter((dog) => dog.owner === user);
-            
-            // 대표 강아지 찾기 (main이 true인 아이, 없으면 첫 번째 아이, 그것도 없으면 null)
             const mainDog = myDogs.find((dog) => dog.main) || myDogs[0] || null;
-
-            setDogStats({
-                count: myDogs.length,
-                mainDogName: mainDog ? mainDog.name : '없음'
-            });
+            setDogStats({ count: myDogs.length, mainDogName: mainDog ? mainDog.name : '없음' });
         } else {
             setDogStats({ count: 0, mainDogName: '없음' });
         }
     }, [currentUser, isLoginOpen]);
 
-    // 로그인 서브밋 핸들러
     const handleLoginSubmit = () => {
         const { id, pw } = loginForm;
         const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -66,65 +49,56 @@ function Layout() {
         localStorage.setItem('currentUser', id);
         setCurrentUser(id);
         setIsLoginOpen(false);
-        setLoginForm({ id: '', pw: '' }); // 폼 초기화
+        setLoginForm({ id: '', pw: '' });
         alert(`${id}님 환영합니다!`);
     };
 
-    // 회원가입 서브밋 핸들러
     const handleSignupSubmit = () => {
         const { id, pw, pwCheck } = signupForm;
-
-        if (id === '' || pw === '') {
-            alert('모든 정보를 입력하세요.');
-            return;
-        }
-
-        if (pw !== pwCheck) {
-            alert('비밀번호가 일치하지 않습니다.');
-            return;
-        }
+        if (id === '' || pw === '') { alert('모든 정보를 입력하세요.'); return; }
+        if (pw !== pwCheck) { alert('비밀번호가 일치하지 않습니다.'); return; }
 
         const users = JSON.parse(localStorage.getItem('users')) || [];
-        const exists = users.find((u) => u.id === id);
-
-        if (exists) {
-            alert('이미 존재하는 아이디입니다.');
-            return;
-        }
+        if (users.find((u) => u.id === id)) { alert('이미 존재하는 아이디입니다.'); return; }
 
         users.push({ id, pw });
         localStorage.setItem('users', JSON.stringify(users));
         alert('회원가입 완료! 로그인 모달창으로 안내합니다.');
         
         setIsSignupOpen(false);
-        setIsLoginOpen(true); // 가입 완료 후 바로 로그인 편의 제공
-        setSignupForm({ id: '', pw: '', pwCheck: '' }); // 폼 초기화
+        setIsLoginOpen(true);
+        setSignupForm({ id: '', pw: '', pwCheck: '' });
     };
 
     return (
         <div className="app-container">
-            {/* 헤더 영역 */}
             <header>
-                <div className="logo">MungCare</div>
+                {/* 🌟 로고 클릭 시 홈('/')으로 이동하도록 Link 태그 추가 (스타일 유지를 위해 클래스명 포함) */}
+                <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+                    MungCare
+                </Link>
+                
                 <nav className="navbar">
                     <ul>
                         <li><NavLink to="/" end>홈</NavLink></li>
-                        <li><NavLink to="/profile">내 강아지</NavLink></li>
-                        <li><NavLink to="/care">기록</NavLink></li>
-                        <li><NavLink to="/notice">커뮤니티</NavLink></li>
+                        {/* 로그인했을 때만 나머지 메뉴 노출 */}
+                        {currentUser && (
+                            <>
+                                <li><NavLink to="/profile">내 강아지</NavLink></li>
+                                <li><NavLink to="/care">기록</NavLink></li>
+                                <li><NavLink to="/notice">커뮤니티</NavLink></li>
+                            </>
+                        )}
                     </ul>
                 </nav>
                 
-                {/*  렌더링 짝 보정 및 위젯 레이아웃 분리 구현 */}
                 <div className="profile" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                     {!currentUser ? (
-                        /* 로그인 전: 회원가입 + 로그인 버튼 */
                         <>
                             <button id="signupBtn" onClick={() => setIsSignupOpen(true)}>회원가입</button>
                             <button id="loginBtn" onClick={handleAuthButtonClick}>로그인</button>
                         </>
                     ) : (
-                        /* 로그인 후: 미니 대시보드 위젯 + 로그아웃 버튼 */
                         <>
                             <div className="my-info-widget">
                                 <span className="user-id"> <b>{currentUser}</b>님</span>
@@ -139,9 +113,16 @@ function Layout() {
                 </div>
             </header>
 
-            {/* 가변 페이지 콘텐츠 영역 */}
+            {/* 메인 구역 */}
             <main>
-                <Outlet context={{ currentUser }} />
+                {currentUser ? (
+                    <Outlet context={{ currentUser }} />
+                ) : (
+                    <LandingHome 
+                        openLogin={() => setIsLoginOpen(true)} 
+                        openSignup={() => setIsSignupOpen(true)} 
+                    />
+                )}
             </main>
 
             {/* 로그인 모달 */}
@@ -152,24 +133,12 @@ function Layout() {
                             <h2>로그인</h2>
                             <button className="close-btn" onClick={() => setIsLoginOpen(false)}>✕</button>
                         </div>
-                        <input 
-                            type="text" 
-                            placeholder="아이디" 
-                            value={loginForm.id}
-                            onChange={(e) => setLoginForm({ ...loginForm, id: e.target.value })}
-                        />
-                        <input 
-                            type="password" 
-                            placeholder="비밀번호" 
-                            value={loginForm.pw}
-                            onChange={(e) => setLoginForm({ ...loginForm, pw: e.target.value })}
-                        />
+                        <input type="text" placeholder="아이디" value={loginForm.id} onChange={(e) => setLoginForm({ ...loginForm, id: e.target.value })} />
+                        <input type="password" placeholder="비밀번호" value={loginForm.pw} onChange={(e) => setLoginForm({ ...loginForm, pw: e.target.value })} />
                         <button id="loginSubmit" onClick={handleLoginSubmit}>로그인</button>
                         <div className="signup-link">
                             계정이 없으신가요?{' '}
-                            <span id="moveSignup" onClick={() => { setIsLoginOpen(false); setIsSignupOpen(true); }}>
-                                회원가입
-                            </span>
+                            <span id="moveSignup" onClick={() => { setIsLoginOpen(false); setIsSignupOpen(true); }}>회원가입</span>
                         </div>
                     </div>
                 </div>
@@ -183,28 +152,39 @@ function Layout() {
                             <h2>회원가입</h2>
                             <button className="close-btn" onClick={() => setIsSignupOpen(false)}>✕</button>
                         </div>
-                        <input 
-                            type="text" 
-                            placeholder="* 아이디 *" 
-                            value={signupForm.id}
-                            onChange={(e) => setSignupForm({ ...signupForm, id: e.target.value })}
-                        />
-                        <input 
-                            type="password" 
-                            placeholder="* 비밀번호 *" 
-                            value={signupForm.pw}
-                            onChange={(e) => setSignupForm({ ...signupForm, pw: e.target.value })}
-                        />
-                        <input 
-                            type="password" 
-                            placeholder="* 비밀번호 확인 *" 
-                            value={signupForm.pwCheck}
-                            onChange={(e) => setSignupForm({ ...signupForm, pwCheck: e.target.value })}
-                        />
+                        <input type="text" placeholder="* 아이디 *" value={signupForm.id} onChange={(e) => setSignupForm({ ...signupForm, id: e.target.value })} />
+                        <input type="password" placeholder="* 비밀번호 *" value={signupForm.pw} onChange={(e) => setSignupForm({ ...signupForm, pw: e.target.value })} />
+                        <input type="password" placeholder="* 비밀번호 확인 *" value={signupForm.pwCheck} onChange={(e) => setSignupForm({ ...signupForm, pwCheck: e.target.value })} />
                         <button id="signupSubmit" onClick={handleSignupSubmit}>가입하기</button>
                     </div>
                 </div>
             )}
+
+            {/* 푸터 영역 */}
+            <footer className="site-footer">
+                <div className="footer-container">
+                    <div className="footer-left">
+                        {/* 🌟 푸터의 로고도 클릭 시 홈으로 이동하도록 Link로 변경 */}
+                        <Link to="/" className="footer-logo" style={{ textDecoration: 'none' }}>
+                            MungCare
+                        </Link>
+                        <p className="footer-tagline">반려견의 건강한 일상과 행복한 소통을 기록합니다.</p>
+                    </div>
+                    <div className="footer-right">
+                        <div className="footer-links">
+                            <a href="https://github.com" target="_blank" rel="noreferrer">Github</a>
+                            {/* 로그인 시에만 푸터 링크 작동 */}
+                            {currentUser && (
+                                <>
+                                    <Link to="/notice">커뮤니티</Link>
+                                    <Link to="/care">건강기록</Link>
+                                </>
+                            )}
+                        </div>
+                        <p className="copyright">© 2026 MungCare. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

@@ -1,0 +1,136 @@
+.landing-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: sans-serif;
+}
+
+/* 히어로 섹션 */
+.landing-hero {
+  text-align: center;
+  padding: 40px 0 60px 0;
+}
+
+.landing-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+.landing-subtitle {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.landing-cta-btn {
+  background: #2b7fff;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.landing-cta-btn:hover {
+  background: #1967d2;
+}
+
+/* 요약 그리드 */
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .landing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.landing-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 28px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.landing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.card-tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #2b7fff;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.landing-card h3 {
+  font-size: 18px;
+  color: #222;
+  margin: 0 0 12px 0;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.card-link {
+  font-size: 13px;
+  color: #495057;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* 하단 배너 */
+.landing-banner {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid #e9ecef;
+}
+
+.landing-banner h2 {
+  font-size: 22px;
+  color: #111;
+  margin: 0 0 10px 0;
+}
+
+.landing-banner p {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 24px 0;
+}
+
+.landing-sub-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.landing-sub-btn:hover {
+  background: #111;
+}

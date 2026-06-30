@@ -35,7 +35,7 @@
         setActiveTab(tab);
     };
 
-    // 좋아요 토글 기능 (ID당 1회 제한)
+    // 좋아요 토글 기능 ID당 1회 제한
     const handleLikeToggle = (postId, e) => {
         e.stopPropagation(); // 리스트 클릭 이벤트 전파 방지
         if (!currentUser) return alert('좋아요는 로그인 후 가능합니다.');
