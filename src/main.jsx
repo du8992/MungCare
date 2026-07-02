@@ -6,6 +6,6 @@ import './index.css' // 전역 스타일이 있다면 유지
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )

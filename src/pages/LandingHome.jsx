@@ -9,9 +9,9 @@
         <section className="landing-hero">
             <h1 className="landing-title">반려견 건강 케어의 시작, MungCare</h1>
             <p className="landing-subtitle">
-            소중한 아이의 프로필 등록부터 일일 건강 데이터 분석, 반려인 커뮤니티까지 한 번에 관리하세요.
+            내 반려견의 프로필 등록, 일일 건강 데이터 분석과 반려인 커뮤니티까지 한 번에 관리하세요.
             </p>
-            {/*  클릭 시 로그인 모달이 열립니다 */}
+            {/* 상단 로그인 */}
             <button className="landing-cta-btn" onClick={openLogin}>
             시작하기
             </button>
@@ -62,9 +62,9 @@
 
         </div>
 
-        {/* 하단 회원가입 유도 배너 */}
+        {/* 하단 회원가입 */}
         <section className="landing-banner">
-            <h2>지금 가입하고 반려견을 위한 건강 대시보드를 만나보세요</h2>
+            <h2>지금 가입하고 반려견을 위한 건강관리를 시작해보세요</h2>
             <p>간단한 가입만으로 모든 기능을 무료로 이용할 수 있습니다.</p>
             {/*  클릭 시 회원가입 모달이 바로 열립니다 */}
             <button className="landing-sub-btn" onClick={openSignup}>
