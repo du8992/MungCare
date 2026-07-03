@@ -1,289 +1,296 @@
     .home-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-    font-family: sans-serif;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: sans-serif;
     }
 
     .home-welcome {
-    font-size: 28px;
-    color: #222;
-    margin-bottom: 8px;
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 8px;
     }
 
     .home-subtitle {
-    color: #666;
-    font-size: 15px;
-    margin-bottom: 35px;
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 35px;
     }
 
     /* 대시보드 카드 배치 구조 (Responsive Grid) */
     .home-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
     }
 
     /* 카드 공통 스타일 */
     .home-card {
-    background: #ffffff;
-    border: 1px solid #e1e4e6;
-    border-radius: 16px;
-    padding: 24px;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      background: #ffffff;
+      border: 1px solid #e1e4e6;
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
 
     /* 마우스 올리면 부드럽게 강조 */
     .home-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #f1f3f5;
-    padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #f1f3f5;
+      padding-bottom: 12px;
     }
 
     .card-header h3 {
-    font-size: 18px;
-    color: #333;
-    margin: 0;
+      font-size: 18px;
+      color: #333;
+      margin: 0;
     }
 
     .move-badge {
-    font-size: 12px;
-    color: #4f8cff;
-    font-weight: bold;
+      font-size: 12px;
+      color: #4f8cff;
+      font-weight: bold;
     }
 
     .empty-text {
-    color: #aaa;
-    font-size: 14px;
-    text-align: center;
-    padding: 40px 0;
+      color: #aaa;
+      font-size: 14px;
+      text-align: center;
+      padding: 40px 0;
     }
 
-    /* 1. 강아지 카드 내부 스타일 */
+    /* 강아지 카드 내부 스타일 */
     .home-dog-profile {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .home-dog-img {
-    width: 85px;
-    height: 85px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #e1ecff;
+      width: 85px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e1ecff;
     }
 
     .home-dog-no-img {
-    width: 70px;
-    height: 70px;
-    background: #f1f3f5;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: #adb5bd;
-    font-weight: bold;
+      width: 70px;
+      height: 70px;
+      background: #f1f3f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #adb5bd;
+      font-weight: bold;
     }
 
     .home-dog-info h4 {
-    font-size: 18px;
-    margin: 0 0 8px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+      font-size: 18px;
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .main-tag {
-    background: #4f8cff;
-    color: white;
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 4px;
+      background: #4f8cff;
+      color: white;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
 
     .home-dog-info p {
-    margin: 4px 0;
-    font-size: 14px;
-    color: #555;
+      margin: 4px 0;
+      font-size: 14px;
+      color: #555;
     }
 
-    /* 📊 2. 케어 기록 내부 스타일 */
+    /* 케어 기록 내부 스타일 */
     .home-log-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .home-log-item {
-    display: flex;
-    justify-content: space-between;
-    background: #f8f9fa;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #444;
+      display: flex;
+      justify-content: space-between;
+      background: #f8f9fa;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #444;
     }
 
     .log-date {
-    font-weight: bold;
-    color: #666;
+      font-weight: bold;
+      color: #666;
     }
 
     /* 인기 게시글 내부 스타일 */
     .home-post-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .home-post-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border-bottom: 1px dashed #f1f3f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed #f1f3f5;
     }
 
     .home-post-item:last-child {
-    border-bottom: none;
+      border-bottom: none;
     }
 
     .post-title-block {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    max-width: 75%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 75%;
     }
 
     .post-title-text {
-    font-size: 14px;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+      font-size: 14px;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .post-board-badge {
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
-    white-space: nowrap;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      white-space: nowrap;
     }
 
     .post-board-badge.free {
-    background: #e1f5fe;
-    color: #0288d1;
+      background: #e1f5fe;
+      color: #0288d1;
     }
 
     .post-board-badge.info {
-    background: #fff3e0;
-    color: #f57c00;
+      background: #fff3e0;
+      color: #f57c00;
     }
 
     .post-stats {
-    font-size: 12px;
-    color: #999;
-    display: flex;
-    gap: 8px;
-    white-space: nowrap;
+      font-size: 12px;
+      color: #999;
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
     }
 
-    /* 🌟 푸터를 바닥에 붙이기 위한 고정 레이아웃 설정 */
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* 화면 전체 높이를 차지하게 함 */
-}
+    /* 푸터를 바닥에 붙이기 위한 고정 레이아웃 설정 */
+    .site-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      /* 화면 전체 높이를 차지하게 함 */
+    }
 
-.main-content {
-  flex: 1; /* 중간 콘텐츠가 남은 영역을 다 차지하여 푸터를 아래로 밀어냄 */
-}
+    .main-content {
+      flex: 1;
+      /* 중간 콘텐츠가 남은 영역을 다 차지하여 푸터를 아래로 밀어냄 */
+    }
 
-/* 푸터 디자인*/
-.site-footer {
-  background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  padding: 30px 0;
-  color: #666;
-  font-family: sans-serif;
-  margin-top: auto; /* 마진 자동 분배 */
-}
+    /* 푸터 디자인*/
+    .site-footer {
+      background: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      padding: 30px 0;
+      color: #666;
+      font-family: sans-serif;
+      margin-top: auto;
+      /* 마진 자동 분배 */
+    }
 
-.footer-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* 모바일 대응 */
-  gap: 20px;
-}
+    .footer-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      /* 모바일 대응 */
+      gap: 20px;
+    }
 
-.footer-left .footer-logo {
-  font-weight: bold;
-  font-size: 16px;
-  color: #333;
-}
+    .footer-left .footer-logo {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
 
-.footer-tagline {
-  font-size: 13px;
-  color: #888;
-  margin: 6px 0 0 0;
-}
+    .footer-tagline {
+      font-size: 13px;
+      color: #888;
+      margin: 6px 0 0 0;
+    }
 
-.footer-right {
-  text-align: right;
-}
+    .footer-right {
+      text-align: right;
+    }
 
-/* 푸터 우측 링크들 */
-.footer-links {
-  display: flex;
-  gap: 15px;
-  justify-content: flex-end;
-  margin-bottom: 8px;
-}
+    /* 푸터 우측 링크들 */
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
 
-.footer-links a {
-  font-size: 13px;
-  color: #666;
-  text-decoration: none;
-  transition: color 0.2s;
-}
+    .footer-links a {
+      font-size: 13px;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-.footer-links a:hover {
-  color: #4f8cff; /* 마운트 시 포인트 컬러 연동 */
-}
+    .footer-links a:hover {
+      color: #4f8cff;
+      /* 마운트 시 포인트 컬러 연동 */
+    }
 
-.copyright {
-  font-size: 12px;
-  color: #aaa;
-  margin: 0;
-}
+    .copyright {
+      font-size: 12px;
+      color: #aaa;
+      margin: 0;
+    }
 
-/* 반응형 모바일 대응 */
-@media (max-width: 600px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer-right {
-    text-align: center;
-  }
-  .footer-links {
-    justify-content: center;
-  }
-}
+    /* 반응형 모바일 대응 */
+    @media (max-width: 600px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-right {
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }

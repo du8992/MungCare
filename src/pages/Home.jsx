@@ -38,7 +38,7 @@
         setIsDogSample(false);
         }
 
-        // Care.jsx 데이터 연동 및 정렬
+        // Care 데이터 연동 및 정렬
         const savedLogs = JSON.parse(localStorage.getItem('careLogs')) || [];
         const myLogs = savedLogs
         .filter((log) => log.owner === currentUser)
@@ -124,7 +124,7 @@
 
         <div className={`home-grid ${!currentUser ? 'guest-mode' : ''}`}>
             
-            {/* 카드 1: 반려견 프로필 */}
+            {/* 반려견 프로필 */}
             <div className={`home-card dog-card-section ${isDogSample ? 'sample-mode' : ''}`} onClick={() => navigate('/profile')}>
             <div className="card-header">
                 <h3>반려견 프로필 {isDogSample && <span className="sample-badge">샘플</span>}</h3>
@@ -148,7 +148,7 @@
             )}
             </div>
 
-            {/* 카드 2: 최근 기록 요약 */}
+            {/* 최근 기록 요약 */}
             <div className={`home-card log-card-section ${isLogSample ? 'sample-mode' : ''}`} onClick={() => navigate('/care')}>
             <div className="card-header">
                 <h3>최근 기록 요약 {isLogSample && <span className="sample-badge">샘플</span>}</h3>
@@ -169,7 +169,7 @@
             )}
             </div>
 
-            {/* 카드 3: 활동 칼로리 요약 */}
+            {/* 활동 칼로리 요약 */}
             <div className={`home-card summary-card-section ${isLogSample ? 'sample-mode' : ''}`} onClick={() => navigate('/care')}>
             <div className="card-header">
                 <h3>활동 칼로리 요약 {isLogSample && <span className="sample-badge">샘플</span>}</h3>
@@ -201,7 +201,7 @@
             )}
             </div>
 
-            {/* 카드 4: 인기 게시글 (클릭 시 커뮤니티로 라우팅 이동 연동) */}
+            {/* 인기 게시글 (클릭 시 커뮤니티로 라우팅 이동 연동) */}
             <div className="home-card post-card-section" onClick={() => navigate('/notice')}>
             <div className="card-header">
                 <h3>인기 게시글</h3>

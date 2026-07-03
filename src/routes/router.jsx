@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import Profile from '../pages/Profile';
-import Care from '../pages/Care'; // 1. 방금 만든 컴포넌트 import
+import Care from '../pages/Care'; // 방금 만든 컴포넌트 import
 import Notice from '../pages/notice';
 import NoticeWrite from '../pages/NoticeWrite';
 import Home from '../pages/Home';
